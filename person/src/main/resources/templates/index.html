@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link th:href="@{/components/central.css}" rel="stylesheet">
+  <title>Person demo</title>
+</head>
+<body class="allpages">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/person}">Home Person</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/person/list}">list</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/person/toCreate}">create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/person/toUpdate}">update</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/person/toRemove}">remove</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/person/toSearch}">search</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="card" style="width: 35rem;">
+  <h5 class="card-header">Page of Person</h5>
+  <div class="card-body">
+    <h5 class="card-title">Here living people</h5>
+    <p class="card-text">This POC allows you to create, update, remove, and search for a Person.
+      To improve my tech skills, I built this system, and it gave me more knowledge in some technologies.
+      For the backend, I used Java 21 with GraalVM, gradle, Spring Boot, Hibernate to communicate with the H2 database,
+      FlyWay Migration, Spring Data JPA, Spring actuator, Bean Validation e Hibernate Validation, Spring Web,
+      JUnit 5, Mockito.
+      On the frontend, I integrated Spring Thymeleaf with Bootstrap 5, Thymeleaf is very similar to the PrimeFaces
+      framework from the Java EE specification and makes it easier to render pages. It has tags that allow you to
+      bind the values of returned objects. Through the Model object, the application automatically understands that
+      it needs to go to the "templates" directory and look for an HTML file with the name defined in the string
+      returned from the controller.
+      However, for my specific use case, I preferred to receive the object as JSON to display the result on the screen.
+      It became more efficient to use AJAX along with my endpoint methods and to manipulate the fields on my pages.</p>
+  </div>
+</div>
+<script th:src="@{/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script th:src="@{/js_origem/botoes.js}"></script>
+</body>
+</html>

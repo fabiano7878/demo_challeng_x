@@ -1,0 +1,17 @@
+.allpages{
+  display: grid;
+  justify-content: center;
+  height: 600px;
+  align-content: flex-start;
+}
+
+.hiddenSucess{
+padding: 50px;
+display: none;
+}
+
+.updateSucess{
+padding: 50px;
+display: block;
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/node_modules/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link th:href="@{/components/central.css}" rel="stylesheet">
+    <title>Persons Updated</title>
+</head>
+<body class="allpages">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/person}">Home Person</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/person/list}">list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/person/toCreate}">create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/person/toUpdate}">update</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/person/toRemove}">remove</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/person/toSearch}">search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<span class="d-block p-2 bg-primary text-white">Update Person</span>
+<form id="personForm" onsubmit="submitForm(event)">
+    <div class="mb-3">
+        <label for="inputUpdateIdData" class="form-label width-small">Id of person to update: </label>
+        <input type="text" id="inputUpdateIdData" aria-describedby="Name" placeholder="input the id of person">
+        <div id="updateIdData" class="form-text">input identify number to update person.</div>
+    </div>
+    <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name: </label>
+        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Mary Silva" required>
+        <div id="updateFullName" class="form-text">Input the new name that you would like to update.</div>
+    </div>
+    <div class="mb-3">
+        <label for="birthdate" class="form-label">Bithdate: </label>
+        <input type="date" id="birthdate" name="birthdate" placeholder="yyyy-mm-dd">
+        <div id="updateBirthdate" class="form-text">New date to update birthdate.</div>
+    </div>
+    <div class="mb-3">
+        <label for="idGender" class="form-label">Gender: </label>
+        <select id="idGender" class="form-select form-select-lg mb-3" aria-label="Large select example">
+            <option value="" disabled selected>Select the gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+        </select>
+        <div id="createGender" class="form-text">select gender for person.</div>
+    </div>
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+<div class="hiddenSucess" id="sucessUpdate">
+    <h2>Person updated successfully!</h2>
+    <p>Id: <span id="personId"></span></p>
+    <p>Name: <span id="personName"></span></p>
+    <p>Birthdate: <span id="personBirthdate"></span></p>
+    <p>Gender: <span id="personGender"></span></p>
+</div>
+<script th:src="@{/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js}" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script th:src="@{/js_origem/botoes.js}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:persondb   # Banco de dados em memória
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    platform: h2
+  h2:
+    console:
+      enabled: true           # Habilitar o console H2
+  jpa:
+    hibernate:
+      ddl-auto: update        # Atualizar o esquema automaticamente
+    show-sql: true            # Mostrar SQL no console
+management:                   ##Spring Actuator
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+info:                         ##Spring Actuator to personalize
+  app:
+    name: "PersonCRUD"
+    description: "Actuator in PersonCRUD"
