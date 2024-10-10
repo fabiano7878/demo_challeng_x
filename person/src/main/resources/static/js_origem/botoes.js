@@ -42,8 +42,7 @@ function foundPerson(event){
                });
 }
 
- function submitForm(event) {
-            event.preventDefault();
+ function enviaForm(tokenP, event) {
             let id = '';
             let fullName = '';
             let birthdate = '';
@@ -53,6 +52,7 @@ function foundPerson(event){
             let elementoClassHidden = document.querySelector('hiddenSucess');
             let path = '';
             let methodForm = '';
+            var token = tokenP;
 
             if(document.querySelector("#personForm") != null){
                     if(document.getElementById('inputUpdateIdData') != null){
@@ -85,11 +85,12 @@ function foundPerson(event){
                 birthdate: birthdateFormatted,
                 idGender: idGender
             };
-
+            if(token != null){
             fetch(`${path}`, {
                 method: methodForm,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Autorization': `${token}`
                 },
                 body: JSON.stringify(personDTO)
             }).then(response => response.json())
@@ -109,4 +110,33 @@ function foundPerson(event){
                 console.log("Error person.");
                 console.error('Error:', error);
             });
+            }else{
+                console.log("Não possivél buscar um token.");
+            }
+           }
+
+        function submitForm(event){
+            event.preventDefault();
+            path ='/auth/login';
+            methodForm = 'POST';
+
+            const AuthenticationDTO = {
+                   login: 'system@system.com',
+                   password: 'system2024'
+            };
+
+              fetch(`${path}`, {
+                  method: methodForm,
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(AuthenticationDTO)
+              }).then(response => response.json())
+                    .then(loginResponse => {
+                    console.log("successfully!");
+                    enviaForm(loginResponse.token, event);
+                  }).catch(error => {
+                  console.log("Error person.");
+                  console.error('Error:', error);
+              });
         }
